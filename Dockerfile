@@ -14,9 +14,6 @@ RUN apt-get install gnupg2 wget curl ca-certificates apt-transport-https openssh
 #Supervisord
 COPY conf/supervisord.conf /etc/supervisord.conf
 
-#start sh
-COPY scripts/start.sh /start.sh
-
 RUN chmod 755 /start.sh
 
-CMD /start.sh
+CMD /usr/bin/supervisord -n -c /etc/supervisord.conf
